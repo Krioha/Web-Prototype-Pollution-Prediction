@@ -1,0 +1,35 @@
+{% include('header.html') %}
+<section class="h-100 w-100" style="box-sizing: border-box; background-color: white">
+  <div class="content-4-1 d-flex flex-column align-items-center h-100 flex-lg-row"
+    style="font-family: 'Poppins', sans-serif">
+    <div class="position-relative d-none d-lg-block h-100 width-right">
+      <img class="position-absolute img-fluid centered" src="../static/img/Telkom University.png" alt="none" width="500" height="500" />
+    </div>
+    <div class="d-flex mx-auto align-items-left justify-content-right width-right mx-lg-0">
+      <div class="mx-lg-0 mx-auto">
+        <h3 class="title-text">Web Prototype Air Polution Detector</h3>
+        <p class="caption-text">Silahkan Isi pilihan dibawah</p>
+        <form style="margin-top: 1.5rem" action="/" method="POST" enctype="multipart/form-data">
+          <!-- SPEED AVERAGE -->
+          <div style="margin-bottom: 1.75rem">
+            <label for="UploadFile" class="d-block input-label">Masukan Input File Data(CSV)</label>
+            <div class="d-flex w-100 div-input">
+              <input class="form-control-file" type="file" id="formFile" name="file">
+            </div>
+          </div>
+          <div style="margin-bottom: 1.75rem">
+            <label for="" class="d-block input-label">Pilih Metode Machine learning</label>
+            <select name="jenis" class="form-select" aria-label="Default select example">
+              <option selected>Pilih metode machine learning</option>
+              <option value="Ada">AdaBoost</option>
+              <option value="BC">BaggingClasifier</option>
+              <option value="HGBC">HistGradientBoostingClassifier</option>
+            </select>
+          </div>
+          <button class="btn btn-fill text-white d-block w-100" type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% include('footer.html') %}
