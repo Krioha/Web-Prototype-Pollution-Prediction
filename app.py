@@ -25,15 +25,24 @@ def classification(features,jenis):
     if (jenis=='Ada'):
         pickled_model = pickle.load(open('modelAdaNS.pkl', 'rb'))
         features['Prediksi']=pickled_model.predict(features)
-        return features
+        acc_train=0.8
+        recall_train=0.8
+        precicion_train=0.8
+        return features,acc_train,recall_train,precicion_train
     elif (jenis=='BC'):
         pickled_model = pickle.load(open('modelBcNS.pkl', 'rb'))
         features['Prediksi']=pickled_model.predict(features)
-        return features
+        acc_train=0.9875
+        recall_train=0.9875
+        precicion_train=0.9882
+        return features,acc_train,recall_train,precicion_train
     elif (jenis=='HGBC'):
         pickled_model = pickle.load(open('modelHgbcNS.pkl', 'rb'))
         features['Prediksi']=pickled_model.predict(features)
-        return features
+        acc_train=0.9875
+        recall_train=0.9875
+        precicion_train=0.9882
+        return features,acc_train,recall_train,precicion_train
 
     
 @app.route('/', methods=['GET','POST'])
@@ -61,9 +70,14 @@ def index():
             jenis= request.form["jenis"]
             csv_file=request.files.get("file")
             X_test=pd.read_csv(csv_file)
-            Data_pred=classification(X_test,jenis)
-            return Data_pred.to_html(classes="table table-striped")
-            #return render_template('Table.html')
+            Data_pred,acc_train,recall_train,precicion_train=classification(X_test,jenis)
+            data=Data_pred.to_numpy()
+            #return Data_pred.to_html()
+            return render_template('Table.html',
+                                data=data,
+                                akurasi=acc_train,
+                                presisi=precicion_train,
+                                recall=recall_train)
 
 
     

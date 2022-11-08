@@ -17,24 +17,60 @@
   <link href="heroes.css" rel="stylesheet" />
 </head>
 
+<style>
+  .table__me {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    min-width: 900px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .table__row:nth-child(even) {
+    background-color: aqua;
+  }
+
+  .table__header {
+    text-align: left;
+    background-color:orange ;
+    padding: 12px 15px;
+  }
+
+.table__cell {
+  padding: 12px 15px;;
+}
+</style>
+
 <body>
   <main>
-    <div class="position-absolute top-50 start-50 translate-middle">
       <img class="d-block mx-auto mb-4" src="../static/img/Telkom University.png" alt="" width="100" height="100" />
       <h2 class="fs-1 fw-bold text-center">Web Prototype Air Polution Detector</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>NO2</th>
-                    <th>PM10</th>
-                    <th>O3</th>
-                    <th>PM25</th>
-                    <th>Prediction</th>
-                </tr>
-            </thead>
-        </table>
+      <div class="text-center">
+        <p>Akurasi: {{ akurasi }} </p>
+        <p>Presisi: {{ presisi }} </p>
+        <p>Sensitiviti: {{ recall }} </p>
+      </div>
+          <table class="table__me">
+            <tr class="table__header">
+                <th class="table__cell">NO2</th>
+                <th class="table__cell">PM10</th>
+                <th class="table__cell">O3</th>
+                <th class="table__cell">PM25</th>
+                <th class="table__cell">Prediction</th>
+              </tr>
+            {% for row in data %}
+            <tr class="table__row">
+              {% for cell in row %}
+              <td class="table__cell">{{ cell }}</td>
+              {% endfor %}
+            </tr>
+            {% endfor %}
+          </table>
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-        
           <input type="button" value="Back to Home" class="btn px-4 gap-3 text-white" style="background-color: #0096ff" onclick="history.back()">
         </div>
       </div>

@@ -1,3 +1,24 @@
+.table__me {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  min-width: 800px;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+}
+
+.table__row:nth-child(even) {
+  background-color: burlywood;
+}
+
+.table__header {
+  text-align: left;
+}
+
+.table__cell {
+  padding: 3px;
+}
+
 .bd-placeholder-img {
     font-size: 1.125rem;
     text-anchor: middle;
@@ -48,3 +69,4 @@
     white-space: nowrap;
     -webkit-overflow-scrolling: touch;
   }
+
